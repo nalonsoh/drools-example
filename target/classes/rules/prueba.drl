@@ -1,0 +1,9 @@
+package fire
+import es.noelalonso.drools.example.EmpleadoDto
+
+rule "validarEmpleado"
+  	when
+    	$a : EmpleadoDto( edad >= 65 )
+	then
+    	$a.setActivo(false);
+end

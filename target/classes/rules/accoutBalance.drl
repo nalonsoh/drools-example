@@ -1,0 +1,43 @@
+import es.noelalonso.drools.example.account.dto.Account
+import es.noelalonso.drools.example.account.dto.AccountPeriod
+import es.noelalonso.drools.example.account.dto.CashFlow
+
+rule "increase balance for credits"
+agenda-group "calculation"
+when
+  $ap : AccountPeriod()
+  $acc : Account( $accountNo : accountNo )
+  CashFlow( type == 1,
+            accountNo == $accountNo,
+            date >= $ap.start && <= $ap.end,
+            $amount : amount )
+then
+   $acc.setBalance( $acc.getBalance() + $amount);
+end
+
+rule "decrease balance for debits"
+agenda-group "calculation"
+when
+  $ap : AccountPeriod()
+  $acc : Account( $accountNo : accountNo )
+  CashFlow( type == 2,
+            accountNo == $accountNo,
+            date >= $ap.start && <= $ap.end,
+            $amount : amount )
+then
+   $acc.setBalance( $acc.getBalance() - $amount);
+end
+
+rule "Print balance for AccountPeriod"
+agenda-group "report"
+//salience -50
+when
+        $ap : AccountPeriod()
+        $acc : Account()
+then
+       System.out.println( $acc.getAccountNo() + " : " + $acc.getBalance() );
+end
+
+query "accounts"
+   $acc : Account()
+end
