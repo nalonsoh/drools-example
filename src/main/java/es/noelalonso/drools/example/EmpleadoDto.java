@@ -7,6 +7,17 @@ public class EmpleadoDto {
 	
 	private boolean activo = true;
 	
+	
+	
+	public EmpleadoDto() {
+		super();
+	}
+	public EmpleadoDto(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	
+	
 	public String getNombre() {
 		return nombre;
 	}

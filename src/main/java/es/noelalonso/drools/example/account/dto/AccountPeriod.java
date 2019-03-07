@@ -28,5 +28,10 @@ public class AccountPeriod {
 	public void setEnd(Date end) {
 		this.end = end;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "AccountPeriod [start=" + start + ", end=" + end + "]";
+	}
+	
 }

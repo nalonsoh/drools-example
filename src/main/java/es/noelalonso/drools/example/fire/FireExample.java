@@ -17,7 +17,7 @@ public class FireExample {
 	public static void main(String[] args) {
 		KieServices kieServices = KieServices.Factory.get();
 		KieContainer kContainer = kieServices.getKieClasspathContainer();
-		KieSession ksession = kContainer.newKieSession("ksession-rules");
+		KieSession ksession = kContainer.newKieSession("fire-rules");
 
 		String[] names = new String[] { "kitchen", "bedroom", "office", "livingroom" };
 

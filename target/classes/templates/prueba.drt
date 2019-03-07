@@ -1,0 +1,19 @@
+template header
+version
+
+package test;
+global java.util.List _jubiladosList;
+
+import es.noelalonso.drools.example.EmpleadoDto
+
+template "Test template"
+rule "validarEmpleado v@{version}"
+  	when
+    	$a : EmpleadoDto( edad >= 65 )
+	then
+    	$a.setActivo(false);
+    	EmpleadoDto $jubilado = new EmpleadoDto($a.getNombre() + " (v@{version})");
+    	EmpleadoDto $jubilado = new EmpleadoDto($a.getNombre() + " (v-@{version})");
+    	_jubiladosList.add($jubilado);
+end
+end template

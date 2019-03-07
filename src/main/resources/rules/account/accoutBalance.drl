@@ -1,6 +1,7 @@
 import es.noelalonso.drools.example.account.dto.Account
 import es.noelalonso.drools.example.account.dto.AccountPeriod
 import es.noelalonso.drools.example.account.dto.CashFlow
+import es.noelalonso.drools.example.account.dto.AccountBalance
 
 rule "increase balance for credits"
 agenda-group "calculation"
@@ -36,8 +37,13 @@ when
         $acc : Account()
 then
        System.out.println( $acc.getAccountNo() + " : " + $acc.getBalance() );
+       insert(new AccountBalance($acc.getAccountNo(),  $acc.getBalance(), $ap));
 end
 
 query "accounts"
    $acc : Account()
+end
+
+query "balaces"
+   $acc : AccountBalance()
 end

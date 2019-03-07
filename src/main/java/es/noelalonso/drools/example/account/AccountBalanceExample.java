@@ -11,6 +11,7 @@ import org.kie.api.runtime.rule.EntryPoint;
 import org.kie.api.runtime.rule.QueryResults;
 
 import es.noelalonso.drools.example.account.dto.Account;
+import es.noelalonso.drools.example.account.dto.AccountBalance;
 import es.noelalonso.drools.example.account.dto.AccountPeriod;
 import es.noelalonso.drools.example.account.dto.CashFlow;
 
@@ -43,9 +44,9 @@ public class AccountBalanceExample {
 		ksession.fireAllRules();
 
 		System.out.println("\nQuery results:");
-		QueryResults queryResults = ksession.getQueryResults("accounts");
+		QueryResults queryResults = ksession.getQueryResults("balaces");
 		queryResults.forEach((row) -> {
-			Account acc = (Account) row.get("$acc");
+			AccountBalance acc = (AccountBalance) row.get("$acc");
 			System.out.println(" -> " + acc);
 		});
 

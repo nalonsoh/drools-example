@@ -1,6 +1,13 @@
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-	<kbase name="rules" packages="rules">
-		<ksession name="ksession-rules" />
+	<kbase packages="rules">
+		<ksession name="ksession-rules" default="true"/>
+	</kbase>
+	<kbase name="fire_rules" packages="rules.fire">
+		<ksession name="fire-rules" />
+	</kbase>
+	<!-- 
+	<kbase name="rules" packages="rules.account">
+		<ksession name="account-rules" />
 	</kbase>
 	<kbase name="dtables" packages="dtables">
 		<ksession name="ksession-dtables" />
@@ -8,4 +15,5 @@
 	<kbase name="process" packages="process">
 		<ksession name="ksession-process" />
 	</kbase>
+	 -->
 </kmodule>

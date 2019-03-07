@@ -1,4 +1,5 @@
-package fire
+global java.util.List _jubiladosList;
+
 import es.noelalonso.drools.example.EmpleadoDto
 
 rule "validarEmpleado"
@@ -6,4 +7,7 @@ rule "validarEmpleado"
     	$a : EmpleadoDto( edad >= 65 )
 	then
     	$a.setActivo(false);
+    	EmpleadoDto $jubilado = new EmpleadoDto($a.getNombre() + " (v1)");
+    //	EmpleadoDto $jubilado = new EmpleadoDto($a.getNombre() + " (v2)");
+    	_jubiladosList.add($jubilado);
 end
